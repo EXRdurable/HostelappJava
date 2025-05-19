@@ -20,6 +20,26 @@ body {
 }
 
 
+.room-search-form {
+    text-align: center;
+    margin: 20px 0;
+}
+.room-search-form input[type="text"] {
+    padding: 8px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.room-search-form button {
+    padding: 8px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 .room-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

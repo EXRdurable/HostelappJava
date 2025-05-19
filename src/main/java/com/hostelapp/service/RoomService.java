@@ -35,7 +35,7 @@ public class RoomService {
 
         return rooms;
     }
-
+    
     // Method to fetch a specific room based on roomId
     public Object getRoomById(int roomId) {
         RoomModel room = null;
@@ -123,5 +123,34 @@ public class RoomService {
         }
         return count;
     }
+    public List<RoomModel> searchRoomsByType(String keyword) {
+        List<RoomModel> rooms = new ArrayList<>();
+        String query = "SELECT room_id, room_type, price, rating, description, image_path FROM rooms WHERE LOWER(room_type) LIKE ?";
+
+        try (Connection conn = DbConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, "%" + keyword.toLowerCase() + "%");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                RoomModel room = new RoomModel();
+                room.setRoomId(rs.getInt("room_id"));
+                room.setRoomType(rs.getString("room_type"));
+                room.setPrice(rs.getDouble("price"));
+                room.setRating(rs.getDouble("rating"));
+                room.setDescription(rs.getString("description"));
+                room.setImagePath(rs.getString("image_path"));
+
+                rooms.add(room);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rooms;
+    }
 }
+
 

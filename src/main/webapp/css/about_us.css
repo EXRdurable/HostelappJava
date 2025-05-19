@@ -104,10 +104,3 @@ h2 {
 	border-radius: 8px;
 	border-left: 4px solid #3498db;
 }
-.map-container {
-    max-width: 800px;
-    margin: 0 auto;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
-}

@@ -14,6 +14,11 @@
 <body>
 
 <jsp:include page="header.jsp" />
+<!-- Search Bar -->
+<form method="get" action="${pageContext.request.contextPath}/rooms" class="room-search-form">
+    <input type="text" name="query" placeholder="Search room type..." value="${query}" />
+    <button type="submit">Search</button>
+</form>
 
 <div class="rooms-page">
     <section class="room-section">

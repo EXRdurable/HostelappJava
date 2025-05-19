@@ -71,6 +71,7 @@ public class ProfileController extends HttpServlet {
 
 			// Write the file to the specified path
 			filePart.write(uploadPath + File.separator + fileName);
+			System.out.println("Uploaded file path: " + uploadPath);
 		}
 
 		// Update the profile in the database

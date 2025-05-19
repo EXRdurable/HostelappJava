@@ -97,7 +97,7 @@ public class AdminDashboardController extends HttpServlet {
             request.setAttribute("message", "Room added successfully");
         }
 
-        // After deletion or any other post action, reload data and redirect or forward
+        // After deletion or any other post action redirect or forward
         doGet(request, response);
     }
 }

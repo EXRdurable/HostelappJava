@@ -49,15 +49,15 @@ public class LoginController extends HttpServlet {
 			HostelModel hosteler = loginService.getUserIfAuthenticated(username, password);
 
 			if (hosteler != null) {
-				// Store hosteler ID and username in session
+				// Stores hosteler ID and username in session
 				SessionUtil.setAttribute(request, "hostelerId", hosteler.getId());
 				SessionUtil.setAttribute(request, "username", hosteler.getUsername());
 				request.getSession().setMaxInactiveInterval(60); // 1 min session timeout
 
-				// Store username in cookie for 30 days
+				// Stores username in cookie for 30 days
 				CookieUtil.addCookie(response, "username", hosteler.getUsername(), 60 * 60 * 24 * 30);
 
-				// Redirect based on role (optional logic)
+				// Redirect based on role 
 				if ("Admin".equalsIgnoreCase(hosteler.getUsername())) {
 					response.sendRedirect(request.getContextPath() + "/admindashboard");
 				} else {

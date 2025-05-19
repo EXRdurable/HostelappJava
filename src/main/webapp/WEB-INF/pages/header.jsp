@@ -15,7 +15,7 @@
         <li><a href="<%= request.getContextPath() %>/services">Services</a></li>
         
         <li><a href="<%= request.getContextPath() %>/about_us">About Us</a></li>
-        
+        <li><a href="<%= request.getContextPath() %>/contactus">Contact Us</a></li>
 
         <%
             String username = (String) session.getAttribute("username");

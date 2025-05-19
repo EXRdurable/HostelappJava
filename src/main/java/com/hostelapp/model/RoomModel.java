@@ -7,6 +7,7 @@ public class RoomModel {
 	private double rating;
 	private String description;
 	private String imagePath;
+	
 public RoomModel(int roomId, String roomType, double price, double rating, String description, String imagePath) {
 	this.roomId = roomId;
 	this.roomType = roomType;

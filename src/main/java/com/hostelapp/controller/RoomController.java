@@ -24,12 +24,18 @@ public class RoomController extends HttpServlet {
     // Fetch rooms data from database
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<RoomModel> rooms = roomService.getAllRooms(); // Use RoomService
 
-        // Set rooms as a request attribute so it can be accessed in the JSP
+        String query = request.getParameter("query");
+        List<RoomModel> rooms;
+
+        if (query != null && !query.trim().isEmpty()) {
+            rooms = roomService.searchRoomsByType(query.trim());
+        } else {
+            rooms = roomService.getAllRooms();
+        }
+
         request.setAttribute("rooms", rooms);
-
-        // Forward the request to the JSP
+        request.setAttribute("query", query); // to keep the search term in the input field
         request.getRequestDispatcher("/WEB-INF/pages/rooms.jsp").forward(request, response);
     }
 }

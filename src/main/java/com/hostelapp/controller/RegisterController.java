@@ -145,14 +145,14 @@ public class RegisterController extends HttpServlet {
 		String profileImage = "default_profile.jpg"; // Default image
 		if (profileImagePart != null && profileImagePart.getSize() > 0) {
 			String rootPath = getServletContext().getRealPath("/");
-			String imageName = imageUtil.getImageNameFromPart(profileImagePart); // Get the image name once
+			String imageName = imageUtil.getImageNameFromPart(profileImagePart); // Get the image name 
 
-			boolean uploadSuccess = imageUtil.uploadImage(profileImagePart, rootPath, "profile_images", imageName); // Pass
+			boolean uploadSuccess = imageUtil.uploadImage(profileImagePart, rootPath, "profile_images", imageName); 
 																													// imageName
-																													// here
+																													
 
 			if (uploadSuccess) {
-				profileImage = imageName; // Set it here
+				profileImage = imageName; // Sets image 
 				System.out.println("registerimageutil: " + profileImage);
 
 			} else {

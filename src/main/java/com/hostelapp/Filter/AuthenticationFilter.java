@@ -21,7 +21,7 @@ public class AuthenticationFilter implements Filter {
 	private static final String ROOMS = "/rooms";
 	private static final String SERVICES = "/services";
 	private static final String BOOK = "/book";
-
+	private static final String CONTACT_US = "/contactus";
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 	}
@@ -59,7 +59,7 @@ public class AuthenticationFilter implements Filter {
 			if (uri.endsWith(LOGIN) || uri.endsWith(SIGNUP)) {
 				res.sendRedirect(req.getContextPath() + DASHBOARD);
 			} else if (uri.endsWith(DASHBOARD) || uri.endsWith(HOME) || uri.endsWith(ROOT) || uri.endsWith(ABOUT)
-					|| uri.endsWith(PROFILE) || uri.endsWith(ROOMS) || uri.endsWith(SERVICES) || uri.endsWith(BOOK)
+					|| uri.endsWith(PROFILE) || uri.endsWith(ROOMS) || uri.endsWith(SERVICES) || uri.endsWith(BOOK)|| uri.endsWith(CONTACT_US)
 					|| uri.endsWith(LOGOUT)) {
 				chain.doFilter(request, response);
 			} else {
@@ -69,7 +69,7 @@ public class AuthenticationFilter implements Filter {
 			// Normal user logic
 			if (uri.endsWith(LOGIN) || uri.endsWith(SIGNUP)) {
 				res.sendRedirect(req.getContextPath() + HOME);
-			} else if (uri.endsWith(HOME) || uri.endsWith(ROOT) || uri.endsWith(ABOUT) || uri.endsWith(PROFILE)
+			} else if (uri.endsWith(HOME) || uri.endsWith(ROOT) || uri.endsWith(ABOUT) || uri.endsWith(PROFILE)|| uri.endsWith(CONTACT_US)
 					|| uri.endsWith(ROOMS) || uri.endsWith(SERVICES) || uri.endsWith(BOOK) || uri.endsWith(LOGOUT)) {
 				chain.doFilter(request, response);
 			} else if (uri.endsWith(DASHBOARD)) {
@@ -79,7 +79,7 @@ public class AuthenticationFilter implements Filter {
 			}
 		} else {
 			// Not logged in
-			if (uri.endsWith(LOGIN) || uri.endsWith(SIGNUP) || uri.endsWith(HOME) || uri.endsWith(ROOT)
+			if (uri.endsWith(LOGIN) || uri.endsWith(SIGNUP) || uri.endsWith(HOME) || uri.endsWith(ROOT)|| uri.endsWith(CONTACT_US)
 					|| uri.endsWith(ABOUT) || uri.endsWith(ROOMS) || uri.endsWith(SERVICES) || uri.endsWith(BOOK)) {
 				chain.doFilter(request, response);
 			} else {
